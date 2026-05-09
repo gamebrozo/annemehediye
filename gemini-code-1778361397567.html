@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>En İyi Anne</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --soft-pink: #FFD6E0;
+            --cream: #FFF8F5;
+            --rose-gold: #E6A57E;
+            --dark-text: #3A3A3A;
+            --accent-red: #FF4F81;
+        }
+
+        body, html {
+            margin: 0; padding: 0; height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cream);
+            color: var(--dark-text);
+            overflow: hidden;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        /* Arka Plan Hareketli Kalpler */
+        .bg-circles {
+            position: absolute; width: 100%; height: 100%;
+            overflow: hidden; z-index: 0;
+        }
+        .circle {
+            position: absolute; background: var(--soft-pink);
+            border-radius: 50%; opacity: 0.5; animation: float 10s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
+
+        /* Ana Kart */
+        .container {
+            position: relative; z-index: 10;
+            width: 85%; max-width: 400px;
+            background: white; padding: 40px 20px;
+            border-radius: 30px; text-align: center;
+            box-shadow: 0 15px 35px rgba(230, 165, 126, 0.2);
+            border: 1px solid rgba(230, 165, 126, 0.3);
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--rose-gold); margin-bottom: 10px; }
+        p { font-size: 1.1rem; line-height: 1.6; font-weight: 300; }
+        
+        .heart-icon {
+            font-size: 50px; color: var(--accent-red);
+            animation: pulse 1.5s infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .award-badge {
+            margin-top: 30px; padding: 15px;
+            border: 2px dashed var(--rose-gold);
+            border-radius: 15px; display: inline-block;
+        }
+
+        .award-title { font-weight: 600; font-size: 0.9rem; color: var(--rose-gold); letter-spacing: 2px; text-transform: uppercase; }
+
+        .footer { margin-top: 40px; font-size: 0.7rem; color: #aaa; letter-spacing: 1px; }
+
+        /* Değişen Sözler Alanı */
+        #quote { font-style: italic; min-height: 50px; transition: opacity 0.5s; margin: 20px 0; color: #555; }
+    </style>
+</head>
+<body>
+
+    <div class="bg-circles">
+        <div class="circle" style="width: 100px; height: 100px; top: 10%; left: 5%;"></div>
+        <div class="circle" style="width: 150px; height: 150px; bottom: 10%; right: -50px;"></div>
+    </div>
+
+    <div class="container">
+        <div class="heart-icon">❤️</div>
+        <h1>Canım Annem</h1>
+        <p>Bazı kahramanların pelerini yoktur, <br>onlara <strong>anne</strong> denir.</p>
+        
+        <div id="quote">"Bir annenin sevgisi, hayattaki ilk mucizemizdir."</div>
+
+        <div class="award-badge">
+            <div class="award-title">🏆 Resmi En İyi Anne Ödülü</div>
+            <div style="font-size: 0.8rem; margin-top: 5px;">Sonsuz sabır ve sınırsız sevgi için.</div>
+        </div>
+
+        <div class="footer">BU BİR SEVGİ TASARIMIDIR</div>
+    </div>
+
+    <script>
+        const quotes = [
+            "\"Anne, insanın ilk evi ve ilk huzurudur.\"",
+            "\"Dünyanın en güvenli yeri, bir annenin kalbidir.\"",
+            "\"Cennet, annelerin ayakları altındadır.\"",
+            "\"Senin gülüşün, benim en güzel manzaram.\"",
+            "\"Hayattaki en değerli bağ, seninle olan bağımız.\""
+        ];
+        
+        let i = 0;
+        const quoteEl = document.getElementById('quote');
+
+        setInterval(() => {
+            quoteEl.style.opacity = 0;
+            setTimeout(() => {
+                i = (i + 1) % quotes.length;
+                quoteEl.innerText = quotes[i];
+                quoteEl.style.opacity = 1;
+            }, 500);
+        }, 4000);
+    </script>
+</body>
+</html>
